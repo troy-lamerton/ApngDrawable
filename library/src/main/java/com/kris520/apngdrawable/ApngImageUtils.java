@@ -29,7 +29,7 @@ public class ApngImageUtils {
 
     public static int DECODE_MEMORY_RETRY_COUNT = 3;
 
-    public static enum Scheme {
+    public enum Scheme {
         FILE("file"), ASSETS("assets"), DRAWABLE("drawable"), UNKNOWN("");
 
         private String scheme;
@@ -104,9 +104,8 @@ public class ApngImageUtils {
     }
 
     /**
-     * 把apng文件拷贝到图片缓存目录, 解决assert文件的播放
-     * @param imageUri
-     * @return
+     * @param imageUri obviously
+     * @return file
      */
     protected static File processApngFile(final String imageUri) {
         File cacheFile = new File(getFileCachePath(ApngLoader.getAppContext(), imageUri));
@@ -240,6 +239,7 @@ public class ApngImageUtils {
         File toFile = new File(toFilePath);
         if (toFile.exists()) {
             if (deleteExist) {
+                //noinspection ResultOfMethodCallIgnored
                 toFile.delete();
             } else {
                 return true;
@@ -297,9 +297,6 @@ public class ApngImageUtils {
 
         // 复用图片
         if (reuseBitmap != null && !reuseBitmap.isRecycled() && reuseBitmap.isMutable()) {
-            if (!options.inPurgeable) {
-                options.inMutable = true;
-            }
             int reuseSize = options.outWidth*options.outHeight*4;
             if (reuseBitmap != null && reuseBitmap.getAllocationByteCount() >= reuseSize) {
                 if (reuseBitmap.getWidth() != options.outWidth || reuseBitmap.getHeight() != options.outHeight) {

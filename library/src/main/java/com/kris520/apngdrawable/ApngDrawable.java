@@ -31,7 +31,7 @@ import ar.com.hjg.pngj.PngReaderApng;
  */
 public class ApngDrawable extends Drawable implements Animatable {
     public static final String TAG = "ApngDrawable2";
-    public static final boolean enableDebugLog = true;
+    public static final boolean enableDebugLog = false;
     private static final int INFINITE_LOOP = 0;
 
     protected final Uri sourceUri;

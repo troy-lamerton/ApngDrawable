@@ -89,7 +89,7 @@ public final class Md5 {
 	}
 
 	private static String bufferToHex(byte bytes[]) {
-		Log.d("Md5", "bytes.length = " + bytes.length);
+		if (ApngDrawable.enableDebugLog) Log.d("Md5", "bytes.length = " + bytes.length);
 		return bufferToHex(bytes, 0, bytes.length);
 	}
 
